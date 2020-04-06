@@ -1,0 +1,188 @@
+{
+    "GUID": "22551490-7758-11ea-8e1f-25a40299460f",
+    "modelName": "Capstone -BFL",
+    "code": "",
+    "lastModifTS": "2020-04-06T01:23:06.322Z",
+    "persistenceSchemaVersion": "3",
+    "description": "",
+    "comments": "",
+    "author": "Tina Moore",
+    "version": "",
+    "collections": [
+        {
+            "GUID": "b0a9c780-77a4-11ea-8e1f-25a40299460f",
+            "collectionName": "users",
+            "code": "",
+            "type": "object",
+            "description": "",
+            "comments": "",
+            "$schema": "",
+            "additionalProperties": false,
+            "properties": [
+                {
+                    "type": "objectId",
+                    "format": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "sample": "",
+                    "GUID": "17926240-77a5-11ea-8e1f-25a40299460f",
+                    "name": "ID",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {}
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "b0b53930-77a4-11ea-8e1f-25a40299460f"
+            },
+            "capped": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "size": "",
+            "max": "",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "key": "",
+                "hashed": false,
+                "unique": true,
+                "numInitialChunks": "",
+                "collation": "null",
+                "zone": "",
+                "comments": ""
+            },
+            "bucketId": "d6cee760-7759-11ea-8e1f-25a40299460f",
+            "hackoladeMeta": {
+                "validationErrors": {
+                    "collectionName": false
+                }
+            },
+            "id": "userID"
+        }
+    ],
+    "buckets": [
+        {
+            "GUID": "d6cee760-7759-11ea-8e1f-25a40299460f",
+            "name": "bigfatliar",
+            "code": "",
+            "type": "bucket",
+            "description": "",
+            "comments": "",
+            "collectionIds": [
+                "b0a9c780-77a4-11ea-8e1f-25a40299460f"
+            ],
+            "backgroundColor": {
+                "r": 216,
+                "g": 0,
+                "b": 115,
+                "a": 1
+            },
+            "show": true,
+            "hackoladeMeta": {
+                "validationErrors": {
+                    "name": false
+                }
+            }
+        }
+    ],
+    "views": [],
+    "relationships": [],
+    "users": [],
+    "idToNameHashTable": {
+        "d6cee760-7759-11ea-8e1f-25a40299460f": "bigfatliar",
+        "b0a9c780-77a4-11ea-8e1f-25a40299460f": "users",
+        "17926240-77a5-11ea-8e1f-25a40299460f": "ID"
+    },
+    "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "22553ba0-7758-11ea-8e1f-25a40299460f"
+    },
+    "externalDefinitions": {
+        "type": "externalDefinitions",
+        "properties": [],
+        "GUID": "22553ba1-7758-11ea-8e1f-25a40299460f"
+    },
+    "decorativeSymbols": [],
+    "dbVersion": "v4.2",
+    "dbVendor": "MongoDB",
+    "hideModelViews": true,
+    "appTarget": "MONGODB",
+    "creationTS": "2020-04-05T16:11:40.505Z",
+    "hackoladeMeta": {
+        "validationErrors": {
+            "modelName": false
+        }
+    },
+    "isCreatedByPlugin": true,
+    "pluginInformation": {
+        "pluginEngineVersion": "1.0.0"
+    },
+    "applicationInformation": {
+        "version": "3.6.10"
+    },
+    "settings": {
+        "centralPane": {
+            "dbLevel": {
+                "erd": [
+                    {
+                        "GUID": "b0a9c780-77a4-11ea-8e1f-25a40299460f",
+                        "x": 215,
+                        "y": 220,
+                        "width": 240,
+                        "height": 100,
+                        "color": {}
+                    }
+                ],
+                "buckets": [
+                    {
+                        "x": 175,
+                        "y": 180,
+                        "GUID": "d6cee760-7759-11ea-8e1f-25a40299460f"
+                    }
+                ],
+                "collapsedNodes": [],
+                "activeRelationship": "",
+                "activeRelationshipFields": {
+                    "childField": [],
+                    "parentField": []
+                },
+                "selectedCollections": [],
+                "displayColorPicker": false,
+                "graphView": {
+                    "erd": [],
+                    "buckets": [],
+                    "decorativeSymbols": [],
+                    "hideRelationshipName": false,
+                    "showPropertiesBoxes": false,
+                    "nameAlongTheLine": false,
+                    "forceLayout": true,
+                    "defaultLinkLength": 300
+                },
+                "expandCollections": [],
+                "decorativeSymbols": [],
+                "nestedCollectionsLayout": "horizontal"
+            },
+            "collectionLevel": {},
+            "changed": false
+        },
+        "dtDiagram": {
+            "collapsedNodes": [],
+            "details": true,
+            "hideErdDetails": false
+        }
+    }
+}
