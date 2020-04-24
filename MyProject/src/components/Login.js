@@ -10,49 +10,59 @@ Amplify.configure(config)         // Configure Amplify
 API.configure(config)             // Configure Amplify
 PubSub.configure(config) 
 
-
-const AddUser = `
-mutation ($email: String! $username: String! $password: String! ) {
-  createUser(input: {
-    email: $email
-    username: $username
-    password: $password
-  }) {
-    id email username password 
+const ListUsers = `
+query {
+  listUsers {
+    items {
+      id username password
+    }
   }
 }
 `;
 
-export default class SignUp extends Component {
-  state = {
-    email: '',
-    username: '',
-    password: '',
-    users: []
-  };
+let isUser = false; 
+
+export default class Login extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      users: []
+    };
+  }
+
+  async componentDidMount() {
+    try {
+      const users = await API.graphql(graphqlOperation(ListUsers));
+      console.log('u: ', users);
+      this.setState({ users: users.data.listUsers.items });
+    } catch (err) {
+      console.log('error: ', err);
+    }
+  }
 
   onChangeText = (key, val) => {
     this.setState({ [key]: val });
   };
 
-  addUser = async () => {
-    if (this.state.email === '' || this.state.username === '') return;
-    const user = { email: this.state.email, username: this.state.username, password: this.state.password };
-    try {
-      const users = [...this.state.users, user];
-      this.setState({ users, email: '', username: '', password: '' });
-      console.log('users: ', users);
-      await API.graphql(graphqlOperation(AddUser, user));
-      console.log('success');
-    } catch (err) {
-      console.log('error: ', err);
+  checkUser = async () => {
+    if (this.state.username === '' || this.state.password === '') return;
+    const user = { username: this.state.username, password: this.state.password };
+    if(this.state.users.some(u => u.username === user.username)) {
+        console.log("user exist", user.username); 
+        isUser = true; 
+    }else {
+        console.log("user does not exist", user.username); 
     }
+    
   };
 
   render(){
     return(
       <View style={styles.container}>
-        <Text style={styles.bigRed}>Sign Up!</Text>
+        <Text style={styles.bigRed}>Login!</Text>
         <View style={styles.inputContainer}>
             <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/male-user/ultraviolet/50/3498db'}}/>
             <TextInput style={styles.inputs}
@@ -62,16 +72,6 @@ export default class SignUp extends Component {
               value={this.state.username}
             /> 
         </View>
-    
-        <View style={styles.inputContainer}>
-          <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
-          <TextInput style={styles.inputs}
-              placeholder="Email"
-              underlineColorAndroid='transparent'
-              onChangeText={val => this.onChangeText('email', val)}
-              value={this.state.email}
-          />
-        </View>
         
         <View style={styles.inputContainer}>
           <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
@@ -79,14 +79,19 @@ export default class SignUp extends Component {
               placeholder="Password"
               secureTextEntry={true}
               underlineColorAndroid='transparent'
-              onChangeText={(password) => this.setState({password})}
+              onChangeText={(password) => {
+                  this.setState({password});
+                  this.checkUser(); 
+              }}
               value={this.state.password} 
           />
         </View>
-    
-        <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={this.addUser}>
-          <Text style={styles.signUpText}>Sign up</Text>
+        <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} 
+        onPress={() => isUser ? this.props.navigation.navigate("Profile", { name: this.state.username, }) : this.props.navigation.navigate("SignUp")}> 
+        <Text style={styles.signUpText}>Login</Text>
         </TouchableHighlight>
+
+        <Text onPress={()=> this.props.navigation.navigate("SignUp")}>Don't have an account? Sign up!</Text>
       </View>
     )
   }
