@@ -37,3 +37,40 @@ export const deleteTodo = /* GraphQL */ `
     }
   }
 `;
+export const createUser = /* GraphQL */ `
+mutation ($email: String! $username: String! $password: String! ) {
+  createUser(input: {
+    email: $email
+    username: $username
+    password: $password
+  }) {
+    id email username password 
+  }
+}
+`;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    updateUser(input: $input, condition: $condition) {
+      id
+      email
+      username
+      password
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      id
+      email
+      username
+      password
+    }
+  }
+`;
