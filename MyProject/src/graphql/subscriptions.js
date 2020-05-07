@@ -58,3 +58,33 @@ export const onDeleteUser = /* GraphQL */ `
     }
   }
 `;
+export const onCreateTopic = /* GraphQL */ `
+  subscription OnCreateTopic {
+    onCreateTopic {
+      id
+      user
+      answered
+      answer
+    }
+  }
+`;
+export const onUpdateTopic = /* GraphQL */ `
+  subscription OnUpdateTopic {
+    onUpdateTopic {
+      id
+      user
+      answered
+      answer
+    }
+  }
+`;
+export const onDeleteTopic = /* GraphQL */ `
+  subscription OnDeleteTopic {
+    onDeleteTopic {
+      id
+      user
+      answered
+      answer
+    }
+  }
+`;

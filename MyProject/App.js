@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SignUp from './src/components/SignUp'
 import Login  from './src/components/Login'
 import Profile from './src/components/Profile'
+import Game from './src/components/Game'
 
 
 const Stack = createStackNavigator();
@@ -20,7 +21,17 @@ export default class App extends Component {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Game" component={Game} /> 
+        <Stack.Screen 
+          name="Profile" 
+          component={Profile}
+          options={{
+            headerStyle: {
+              backgroundColor: '#000000',
+            },
+            headerTintColor: '#fff',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
     );
@@ -30,7 +41,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0000',
+    backgroundColor: '#000000',
     alignItems: 'center',
     justifyContent: 'center',
   },

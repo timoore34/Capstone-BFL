@@ -53,3 +53,30 @@ export const listUsers = /* GraphQL */ `
     }
   }
 `;
+export const getTopic = /* GraphQL */ `
+  query GetTopic($id: ID!) {
+    getTopic(id: $id) {
+      id
+      user
+      answered
+      answer
+    }
+  }
+`;
+export const listTopics = /* GraphQL */ `
+  query ListTopics(
+    $filter: ModelTopicFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTopics(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        user
+        answered
+        answer
+      }
+      nextToken
+    }
+  }
+`;

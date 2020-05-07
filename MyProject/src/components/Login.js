@@ -55,6 +55,7 @@ export default class Login extends Component {
         isUser = true; 
     }else {
         console.log("user does not exist", user.username); 
+        isUser = false; 
     }
     
   };
